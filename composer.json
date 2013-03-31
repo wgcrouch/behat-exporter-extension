@@ -1,0 +1,28 @@
+{
+    "name": "wgcrouch/behat-exporter",
+    "description": "Behat Exporter",
+    "keywords": ["Behat"],
+    "type": "library",
+    "license": "MIT",
+
+    "require": {
+        "behat/behat": "*",
+        "behat/mink": "*",
+        "behat/mink-extension": "*",
+    },
+
+    "require-dev": {
+        "behat/mink-goutte-driver": "*",
+        "behat/mink-selenium2-driver": "*"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "Wgcrouch\\BehatExporter": "src/"
+        }
+    },
+
+    "config": {
+        "bin-dir": "bin/"
+    }
+}
