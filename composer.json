@@ -8,7 +8,7 @@
     "require": {
         "behat/behat": "*",
         "behat/mink": "*",
-        "behat/mink-extension": "*",
+        "behat/mink-extension": "*"
     },
 
     "require-dev": {
