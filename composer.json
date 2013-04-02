@@ -1,6 +1,6 @@
 {
-    "name": "wgcrouch/behat-exporter",
-    "description": "Behat Exporter",
+    "name": "wgcrouch/behat-exporter-extension",
+    "description": "Behat Exporter Extension",
     "keywords": ["Behat"],
     "type": "library",
     "license": "MIT",

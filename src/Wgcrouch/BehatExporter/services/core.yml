@@ -1,0 +1,8 @@
+parameters:
+
+services:
+    exporter.formatter.dispatcher.json:
+        class: %behat.formatter.dispatcher.class%
+        arguments: [Wgcrouch\BehatExporter\Formatter\JsonFormatter, "json", "Outputs features as json"]
+        tags: 
+            - {name: behat.formatter.dispatcher}
