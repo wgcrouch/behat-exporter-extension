@@ -6,9 +6,6 @@
     "license": "MIT",
 
     "require": {
-        "behat/behat": "*",
-        "behat/mink": "*",
-        "behat/mink-extension": "*"
     },
 
     "require-dev": {
