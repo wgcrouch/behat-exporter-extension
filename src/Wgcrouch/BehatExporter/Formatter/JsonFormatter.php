@@ -107,11 +107,10 @@ class JsonFormatter extends BaseFormatter
      * @uses printSuiteFooter()
      */
     public function afterSuite(SuiteEvent $event)
-    {
-        print "DEFINITIONS\n";
+    {        
         print json_encode($this->definitions);
-        print "\nFEATURES\n";
-        print json_encode($this->features);
+        print "\n{--FEATURES--}\n";
+        print json_encode($this->features);        
     }
 
     /**
@@ -129,7 +128,8 @@ class JsonFormatter extends BaseFormatter
             'name' => $feature->getTitle(),
             'tags' => $tags,
             'description' => $feature->getDescription(),
-            'scenarios' => array()
+            'scenarios' => array(),
+            'background' => array()
         );
     }
 
@@ -200,8 +200,7 @@ class JsonFormatter extends BaseFormatter
             'title' => $scenario->getTitle(),
             'tags' => $scenario->getTags(),
             'steps' => array(),
-            'path' => $this->relativizePathsInString($scenario->getFile()).':'.$scenario->getLine(),
-            'background' => array()
+            'path' => $this->relativizePathsInString($scenario->getFile()).':'.$scenario->getLine()
         );  
     }
 
@@ -258,7 +257,8 @@ class JsonFormatter extends BaseFormatter
             $this->definitions[$definition->getRegex()] = array(
                 'regex' => $definition->getRegex(),
                 'description' => $definition->getDescription(),
-                'path' => $this->relativizePathsInString($definition->getPath())
+                'path' => $this->relativizePathsInString($definition->getPath()),
+                'type' => $definition->getType()
             );
             $newStep['definition'] = $definition->getRegex();
         } else {
@@ -266,7 +266,7 @@ class JsonFormatter extends BaseFormatter
         }
 
         if ($this->inBackground) {
-            $this->currentFeature['background'] = $newStep;
+            $this->currentFeature['background'][$newStep['type'] . $newStep['text']] = $newStep;
         } else {
             $this->currentScenario['steps'][]  = $newStep;
         }
